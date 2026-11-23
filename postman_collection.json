@@ -1,0 +1,233 @@
+{
+  "info": {
+    "name": "BC_GK - Crawler & Embedding",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Kiểm tra server đang chạy"
+      }
+    },
+    {
+      "name": "2. Danh sách feed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/feeds",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "feeds"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "3. Crawl",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/crawl?limit=2&clear_visited=false",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "crawl"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "2"
+            },
+            {
+              "key": "clear_visited",
+              "value": "false"
+            }
+          ]
+        },
+        "description": "Chỉ crawl, chưa embed"
+      }
+    },
+    {
+      "name": "4. Xem bài đã crawl",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/articles?full=false",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles"
+          ],
+          "query": [
+            {
+              "key": "full",
+              "value": "false"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "5. Embed",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/embed",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "embed"
+          ]
+        },
+        "description": "Embed các bài vừa crawl vào FAISS"
+      }
+    },
+    {
+      "name": "6. Crawl + Embed",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/crawl-and-embed?limit=2&reset=false",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "crawl-and-embed"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "2"
+            },
+            {
+              "key": "reset",
+              "value": "false"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "7. Thống kê",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/stats",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "stats"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "8. Xem chunk",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/chunks?skip=0&limit=5&vector_preview=8",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "chunks"
+          ],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            },
+            {
+              "key": "vector_preview",
+              "value": "8"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "9. Thử chia chunk",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/chunk-preview",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "chunk-preview"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Đội tuyển Việt Nam giành chiến thắng 2-0 trước Thái Lan trong trận chung kết lượt đi. Hai bàn thắng được ghi ở hiệp hai.\",\n  \"chunk_size\": 13,\n  \"overlap\": 4\n}"
+        }
+      }
+    },
+    {
+      "name": "10. Xoá index",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/index",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "index"
+          ]
+        },
+        "description": ""
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    }
+  ]
+}
