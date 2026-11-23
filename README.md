@@ -1,4 +1,4 @@
-# KHDL_BOT – Báo cáo giữa kỳ: Crawler + Embedding
+# KHDL_BOT – Crawler + Embedding
 
 Phần đầu của hệ thống chatbot hỏi đáp tin tức tiếng Việt theo hướng RAG. Báo cáo giữa kỳ gồm hai khâu: **thu thập dữ liệu (crawler)** và **tạo vector (embedding)**. Phần tìm kiếm và sinh câu trả lời sẽ làm ở giai đoạn sau.
 
